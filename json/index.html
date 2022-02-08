@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body ng-app="empMS" ng-controller="empMSCtrl">
+
+    <h1>Selection Commiittee</h1>
+    <table class="table table-borderless table-hover container-fluid">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Role</th>
+                <th>Salary</th>
+            </tr>
+            <tr>
+                <td><input type="text"  class="form-control" ng-model="name"></td>
+                <td><input type="text"  class="form-control" ng-model="address"></td>
+                <td><input type="text"  class="form-control" ng-model="email"></td>
+                <td><input type="number"  class="form-control" ng-model="phone"></td>
+                <td><input type="text"  class="form-control" ng-model="role"></td>
+                <td><input type="number"  class="form-control" ng-model="salary" min="0" max="50000"></td>
+            </tr>
+        </thead>
+        <tbody ng-repeat="emp in employees | filter: name| filter: address| filter: email| filter: phone| filter: role| filter: salary">
+            <tr>
+                <td>{{emp.name | uppercase}}</td>
+                <td>{{emp.address | uppercase}}</td>
+                <td id={{emp.email}}>{{emp.email | validateEmail}}</td>
+                <td id={{emp.phone}}>{{emp.phone | validatePhone}}</td>
+                <td>{{emp.role | lowercase}}</td>
+                <td>{{emp.salary | currency}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script src="./index.js"></script>
+</body>
+</html>
