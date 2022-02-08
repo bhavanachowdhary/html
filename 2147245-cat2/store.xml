@@ -1,0 +1,20 @@
+<christ>
+<computerscience>
+	<STU-NAME>Bhavana</STU_NAME>
+	<STU-UNIVERSITY>christuniversity</STU-UNIVERSITY>
+	<STU-PHONE>9538902241</STU-PHONE>
+	<STU-EMAIl>bhavana@christuniversity.in</STU-EMAIl>
+</computerscience>
+<STU-NAME>
+	<STU-NAME>steve</STU_NAME>
+	<STU-UNIVERSITY>christuniversity</STU-UNIVERSITY>
+	<STU-PHONE>9987654675</STU-PHONE>
+	<STU-EMAIl>steve@christuniversity.in</STU-EMAIl>
+</computerscience>
+<computerscience>
+	<STU-NAME>Pavan</STU_NAME>
+	<STU-UNIVERSITY>christuniversity</STU-UNIVERSITY>
+	<STU-PHONE>9998878675</STU-PHONE>
+	<STU-EMAIl>Pavan@christuniversity.in</STU-EMAIl>
+</computerscience>
+</christ>

@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="jquery-3.5.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Gateways-2022</title>
+</head>
+
+<body >
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <a href="#" class="navbar-brand">CHRIST UNIVERSITY - TECHNOVID</a>
+    </nav>
+
+    <div class="container-fluid"></div>
+    <h3>REGISTRATION FORM</h3>
+    </div>
+
+    <!-- Form -->
+    <div id="mainform">
+        <form action="" class="main-form needs-validation" novalidate>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="firstname">Firstname</label>
+                        <input type="text" name="firstname" id="fname"  placeholder="Eg: Rahul" class="form-control"
+                            onkeypress="return restrictNumeric(event)" required>
+                        <div id="messagefname"></div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="lastname">Lastname</label>
+                        <input type="text" name="lastname" id="lname" style="text-transform: capitalize;" placeholder="Eg: Khanna" class="form-control"
+                            onkeypress="return restrictNumeric(event)" required>
+                        <div id="messagelname"></div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="rahul.khanna@christuniversity.in"
+                    class="form-control" onblur="checkmail()" required>
+                <small class="form-text text-muted" id="messageemail">
+                    
+                </small>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="phone">Phone </label>
+                        <input type="text" name="phone" id="phone" maxlength="10" placeholder="" class="form-control"
+                            onkeypress="return restrictAlphabets(event)" required>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="form-group">
+                        <label for="age">Age </label>
+                        <input type="text" name="age" id="age" maxlength="2" pattern=".{1,9}" placeholder="" class="form-control"
+                            onkeypress="return restrictAlphabets(event)" required>
+                            <div id="messageage"></div>
+                    </div>
+                </div>
+        </form>
+        </form>
+        <div class="form-group">
+            <label for="branch">Branch</label>
+            <input type="text" name="branch" id="branch" style="text-transform: capitalize;" placeholder="Eg: MCA" class="form-control"
+                onkeypress="return restrictNumeric(event)" required>
+            <div class="messagebranch"></div>
+        </div>
+        <div class="form-group">
+            <label for="college">College\University</label>
+            <input type="text" name="college" id="University" style="text-transform: capitalize;" placeholder="" class="form-control"
+                onkeypress="return restrictNumeric(event)"  required>
+            <div id="messageuniver"></div>
+        </div>
+        <div class="form-group">
+            <label for="state">State</label>
+            <input type="text" name="state" id="state" style="text-transform: capitalize;" placeholder="" class="form-control"
+                onkeypress="return restrictNumeric(event)" required>
+            <div id="messagestate"></div>
+        </div>
+        <div class="form-group">
+            <label for="address">Address</label>
+            <input type="text" name="address" id="address" placeholder="" class="form-control">
+            <div id="messageaddress"></div>
+        </div>
+        <div class="form-group">
+            <label for="uname">Username</label>
+            <input type="text" name="uname" id="user" placeholder="" class="form-control"
+            onkeypress="return restrictNumeric(event)" required>
+            <div id="messageuser"></div>
+        </div>
+        <div class="form-group">
+            <label for="password" onfocus="validatepass()">Password</label>
+            <input type="text" name="password" id="password" placeholder="" class="form-control"
+              required>
+            <label id="messagepass"></label>
+        </div>
+       <div><button onclick="createCookies() " id="submit">submit</button></div>
+        </form>
+
+        <script src="script.js"></script>
+        <script src="cookie.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+            integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+            integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+            crossorigin="anonymous"></script>
+        <script>
+            var form = document.querySelector('.needs-validation');
+            form.addEventListener('submit', function (event) {
+                if (form.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                else {
+                    window.alert('Form submitted sucessfully!');
+                }
+                form.classList.add('was-validated');
+            })
+            function restrictAlphabets(e) {
+                var x = e.which; 
+                console.log(e);
+                if ((x >= 48 && x <= 57))
+                    return true;
+                else
+                    return false;
+            }
+            function restrictNumeric(e) {
+                var x = e.which || e.keycode;
+                if ((x >= 65 && x <= 122))
+                    return true;
+                else
+                    return false;
+            }
+
+            
+        </script>
+<script type="text/javascript">
+$(document).ready(function()
+{
+    $("#submit").hide();
+    $("#fname").keyup(function()
+{
+if(validatename1())
+{
+     $("#fname").css("border","4px solid green");
+     $("#messagefname").html("<p class='text-success'>VALIDATED</p>")
+}
+else
+{
+    $("#fname").css("border","4px solid red");
+    $('#messagefname').html("<p class='text-danger'>INCORRECT FIRST NAME</p>");
+}
+ buttonState();
+});
+$("#lname").keyup(function()
+{
+if(validatename2())
+{
+     $("#lname").css("border","4px solid green");
+     $("#messagelname").html("<p class='text-success'>VALIDATED</p>")
+}
+else
+{
+    $("#lname").css("border","4px solid red");
+    $('#messagelname').html("<p class='text-danger'>INCORRECT NAME</p>");
+}
+ buttonState();
+});
+$("#address").keyup(function()
+{
+    if(validateaddress())
+    {
+$("#address").css("border","4px solid green");
+$("#messageadd").html("<p class='text-success'>VALIDATED</p>")
+}
+else
+{
+    $("#address").css("border","4px solid red");
+    $("#messageaddress").html("<p class='text-danger'>INVALID ADDRESS</p>")
+}
+buttonstate();
+}); 
+$("#branch").keyup(function()
+{
+    if(validatebranch())
+    {
+$("#branch").css("border","4px solid green");
+$("#messagebranch").html("<p class='text-success'>VALIDATED</p>")
+}
+else
+{
+    $("#branch").css("border","4px solid red");
+    $("#messagebranch").html("<p class='text-danger'>INVALID ADDRESS</p>")
+}
+
+buttonstate();
+}); 
+
+$("#state").keyup(function()
+{
+    if(validatestate())
+    {
+$("#state").css("border","4px solid green");
+$("#messagestate").html("<p class='text-success'>VALIDATED</p>")
+}
+else
+{
+    $("#state").css("border","4px solid red");
+    $("#messagestate").html("<p class='text-danger'>INVALID ADDRESS</p>")
+}
+buttonstate();
+}); 
+
+$("#University").keyup(function()
+{
+    if(validateuniversity())
+    {
+$("#University").css("border","4px solid green");
+$("#messageuniver").html("<p class='text-success'>VALIDATED</p>")
+}
+else
+{
+    $("#University").css("border","4px solid red");
+    $("#messageuniver").html("<p class='text-danger'>INVALID ADDRESS</p>")
+}
+buttonstate();
+}); 
+$("#email").keyup(function()
+{
+    if(validateemail())
+    {
+$("#email").css("border","4px solid green");
+$("#messageemail").html("<p class='text-success'>VALIDATED</p>")
+}
+else
+{
+    $("#email").css("border","4px solid red");
+    $("#messageemail").html("<p class='text-danger'>INVALID EMAIL</p>")
+}
+buttonstate();
+});
+
+$("#phone").keyup(function()
+{
+    if(validatephone())
+    {
+$("#phone").css("border","4px solid green");
+$("#messagephone").html("<p class='text-success'>VALIDATED</p>")
+}
+else
+{
+    $("#phone").css("border","4px solid red");
+    $("#messagephone").html("<p class='text-danger'>INVALID PHONE NO</p>")
+}
+buttonstate();
+});
+
+$("#password").keyup(function()
+{
+    if(validatepass())
+    {
+$("#password").css("border","4px solid green");
+$("#messagepass").html("<p class='text-success'>STRONG PASSWORD</p>")
+}
+
+else
+{
+    $("#password").css("border","4px solid red");
+    $("#messagepass").html("<p class='text-danger'>INCORRECT PASSWORD</p>")
+}
+buttonstate();
+});
+
+$("#user").keyup(function()
+{
+    if(username())
+    {
+$("#user").css("border","4px solid green");
+$("#messageuser").html("<p class='text-success'>VALIDATED</p>")
+}
+else
+{
+    $("#user").css("border","4px solid red");
+    $("#messageuser").html("<p class='text-danger'>INVALID</p>")
+}
+buttonstate();
+});
+$("#address").keyup(function()
+{
+    if(validateaddress())
+    {
+$("#address").css("border","4px solid green");
+$("#messageaddress").html("<p class='text-success'>VALIDATED</p>")
+}
+else
+{
+    $("#address").css("border","4px solid red");
+    $("#messageaddress").html("<p class='text-danger'>INVALID</p>")
+}
+buttonstate();
+});
+$("#age").keyup(function()
+{
+    if(validateage())
+    {
+$("#age").css("border","4px solid green");
+$("#messageage").html("<p class='text-success'>VALIDATED</p>")
+}
+else
+{
+    $("#age").css("border","4px solid red");
+    $("#messageage").html("<p class='text-danger'>INVALID</p>")
+}
+buttonstate();
+});
+buttonstate();
+});
+
+
+
+function buttonstate()
+{ $("#submit").hide();
+
+    if (validatename1() && validateuniversity() && validatestate() && validatebranch() && validatename2() && validateemail() && validatephone() && validateaddress() &&validateage() && username() && validatepass() ) {
+        $("#submit").show();
+    }
+    else
+    {
+        $("#submit").hide();
+    }
+}
+//+/s+[a-zA-Z]{5,20}
+function validatename1()
+{
+    var name=$("#fname").val();
+    var reg=/^([a-zA-Z]{3,20})$/;
+    if(reg.test(name)){
+             return true;
+         }else{
+             return false;
+         }
+}
+function validatestate()
+{
+    var name=$("#state").val();
+    var reg=/^([a-zA-Z]{3,20})$/;
+    if(reg.test(name)){
+             return true;
+         }else{
+             return false;
+         }
+}
+function validatebranch()
+{
+    var name=$("#branch").val();
+    var reg=/^([a-zA-Z]{3,20})$/;
+    if(reg.test(name)){
+             return true;
+         }else{
+             return false;
+         }
+}
+function validateuniversity()
+{
+    var name=$("#University").val();
+    var reg=/^([a-zA-Z]{3,20})$/;
+    if(reg.test(name)){
+             return true;
+         }else{
+             return false;
+         }
+}
+function validateaddress()
+{
+    var name=$("#address").val();
+    var reg=/^([a-zA-Z0-9#,\s]{3,20})$/;
+    if(reg.test(name)){
+             return true;
+         }else{
+             return false;
+         }
+}
+function validatename2()
+{
+    var name=$("#lname").val();
+    var reg=/^([a-zA-Z]{3,20})$/;
+    if(reg.test(name)){
+             return true;
+         }else{
+             return false;
+         }
+}
+//   /^[1-9]?[0-9]{1}$|^100$/
+//+/s+[a-zA-Z]{5,20}
+function validatephone()
+{
+    var phone=$("#phone").val();
+    var p=/^[6789]{1}[0-9]{9}$/;
+    if(p.test(phone)){
+             return true;
+         }
+         else{
+             return false;
+         }
+}
+function validateage()
+{
+
+    var age=$("#age").val();
+    
+    var p1=/^[1-9]?[0-9]{1}$|^100$/;
+    if(p1.test(age)){
+             return true;
+         }
+         else{
+             return false;
+         }
+}
+function validateemail()
+{
+    var users=$("#user").val();
+    var email=$("#email").val();
+    var reg3=/^([a-zA-z0-9.]{4,20})@(c|C)hristuniversity.in$/;
+    //var reg3=/^users@(c|C)hristuniversity.in$/;
+    var match=/^.*(?=@christuniversity.in)$/;
+    if(reg3.test(email))
+    {
+        return true;
+    }
+    else if(!match.test(users))
+    {
+     return false;
+    }
+    else
+    {
+        return false;
+    }
+
+}
+
+
+
+function validatepass()
+{
+    //special charcter between characters 
+    //(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[a-zA-z][!@#$%^&*?][a-zA-z])(?=.*[~`!@#$%^&*()-_+={}[|\;:"<\]\>,./?])[a-zA-z0-9~`!@#$%^&*()-_+={}[|\;:"<\]\>,./?]{8,20}
+    var pass=$("#password").val();
+    var strong=/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[~`!@#$%^&*()-_+={}[|\;:"<\]\>,./?])[a-zA-z0-9~`!@#$%^&*()_+={}[|\;:"<\]\>,./?]{8,20}$/;
+    if(strong.test(pass))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+function username()
+{
+    //special charcter between characters 
+    //(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[a-zA-z][!@#$%^&*?][a-zA-z])(?=.*[~`!@#$%^&*()-_+={}[|\;:"<\]\>,./?])[a-zA-z0-9~`!@#$%^&*()-_+={}[|\;:"<\]\>,./?]{8,20}
+    var users=$("#user").val();
+        var val=/^[A-Z]{1}[a-zA-Z]{4,}$/;
+    if(val.test(users))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+$(document).ready(function(){
+  $("#user").keypress(function(e){
+     var keyCode = e.which;
+    /*
+      48-57 - (0-9)Numbers
+    */
+ 
+    if ( !(keyCode <= 48 || keyCode >= 57)) { 
+      return false;
+    }
+  });
+});
+</script>
+
+</body>
+
+</html>
