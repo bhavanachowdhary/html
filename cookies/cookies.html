@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookies</title>
+</head>
+
+<body onload="setBgColor()">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <a href="#" class="navbar-brand"><img src="school_black_24dp.svg"> Christ University</a>
+    </nav>
+    <div class="container-fluid"></div>
+    <h3>Registration</h3>
+    </div>
+
+    <!-- Form -->
+    <div id="mainform">
+        <form action="" class="main-form needs-validation" novalidate>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="firstname">Firstname</label>
+                        <input type="text" name="firstname" id="firstname" placeholder="" class="form-control"
+                            onkeypress="return restrictNumeric(event)" required>
+                        <div class="invalid-feedback">Enter your first name.</div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="lastname">Lastname</label>
+                        <input type="text" name="lastname" id="lastname" placeholder="" class="form-control"
+                            onkeypress="return restrictNumeric(event)" required>
+                        <div class="invalid-feedback">Enter your last name.</div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="abc@christuniversity.in" class="form-control"
+                    onblur="checkmail()" required>
+                <small class="form-text text-muted">
+                    Enter your CHRIST email ID here.
+                </small>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone </label>
+                <input type="text" name="phone" id="phone" placeholder="" class="form-control"
+                    onkeypress="return restrictAlphabets(event)" required>
+            </div>
+            <div>
+                <label for="page_color" class="form-label">Color</label>
+                <select class="form-control" name="page_color" id="page_color" onchange="changeColor()">
+                    <option value="#dcdcdc">Grey</option>
+                    <option value="#ffccff">Light Pink</option>
+                    <option value="#cceeff">Light Blue</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="cookiesub">For Cookies</label>
+                <button type="button" class="btn btn-primary btn-sm" id="addcookie" onclick="addtocookie()">Add to Cookies</button>
+                <button type="button" class="btn btn-primary btn-sm" id="removecookie" onclick="removethecookie()">Remove Cookies</button>
+                <button type="button" class="btn btn-primary btn-sm" id="loadcookie" onclick="getCookie()">Read Cookies</button>
+            </div>
+
+            <div class="form-group">
+                <label for="cookiesub">For Local Storage</label>
+                <button type="button" class="btn btn-primary btn-sm" id="addls" onclick="addtols()">Add to Local Storage</button>
+                <button type="button" class="btn btn-primary btn-sm" id="removels" onclick="removethels()">Remove from Local Storage</button>
+            </div>
+
+            <div class="form-group">
+                <label for="cookiesub">For Cookies</label>
+                <button type="button" class="btn btn-primary btn-sm" id="addcookie" onclick="addtoss()">Add to Session Storage</button>
+                <button type="button" class="btn btn-primary btn-sm" id="removecookie" onclick="removethess()">Remove from Session Storage</button>
+            </div>
+
+        </form>
+
+
+        <script src="script.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+        <script>
+
+            var form = document.querySelector('.needs-validation');
+            form.addEventListener('submit', function (event) {
+                if (form.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+
+                else {
+                    window.alert('Form submitted sucessfully!');
+                }
+                form.classList.add('was-validated');
+            })
+
+            function restrictAlphabets(e) {
+                var x = e.which; //which function return ascii code, same as e.keycode. | e is the event which is input.
+                console.log(e);
+                if ((x >= 48 && x <= 57))
+                    return true;
+                else
+                    return false;
+            }
+
+            function restrictNumeric(e) {
+                var x = e.which || e.keycode;
+                if ((x >= 65 && x <= 122))
+                    return true;
+                else
+                    return false;
+            }
+
+            function checkmail() {
+
+                var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@+([a-z.]|)+(christuniversity.in|christuniversity.com)$/;
+                var receivedEmail = document.getElementById("email").value.trim();
+                if (!(receivedEmail.toLowerCase().match(validRegex))) {
+                    window.alert("Please enter valid email address.");
+                    return;
+                }
+            }
+            
+            function show() {
+                var value = document.getElementById("demo").value;
+                if (value != "Select color") {
+                    document.bgColor = value;
+                    document.cookie = "color=" + value;
+                }
+
+            }
+            window.onload = function () {
+                if (document.cookie.length != 0) {
+                    var a = document.cookie.split("=");
+                    document.getElementById("demo").value = a[1];
+                    document.bgColor = a[1];
+                }
+            }
+
+            function setBgColor() {
+
+                var i
+                list = document.cookie.split('; ')
+                for (i = 0; i < list.length; i++) {
+                    if (list[i].split('=')[0] == 'color') {
+                        document.body.style.backgroundColor = list[i].split('=')[1]
+                        document.getElementById("page_color").value = list[i].split('=')[1]
+                    }
+                }
+
+            }
+
+            function changeColor() {
+                var color = document.getElementById("page_color").value
+                document.cookie = "color=" + color + "; expires=Wed, 16 Feb 2022 00:00:00 UTC;"
+                document.body.style.backgroundColor = color
+            }
+
+            var mycookie = {}
+
+        </script>
+
+
+</body>
+
+</html>
