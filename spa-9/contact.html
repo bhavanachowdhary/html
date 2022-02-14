@@ -1,0 +1,30 @@
+<div>
+    <h1 style="height: 1rem;background-color: red;"></h1>
+    <div class="container-fluid px-5 py-3">
+        <div>
+            <label for="search_name">{{message}}</label>
+            <input type="text" name="search_name" id="search_name" ng-model="search_name">
+        </div>
+
+        <table class="table table-borderless table-hover container-fluid" id="search_table" style="display: none;">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Role</th>
+                    <th>Salary</th>
+                </tr>
+            </thead>
+            <tbody ng-repeat="emp in employees | filter: search_name">
+                <tr>
+                    <td>{{emp.name | uppercase}}</td>
+                    <td>{{emp.email}}</td>
+                    <td>{{emp.phone}}</td>
+                    <td>{{emp.role | uppercase}}</td>
+                    <td>{{emp.salary | currency}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

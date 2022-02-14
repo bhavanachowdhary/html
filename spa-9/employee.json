@@ -1,0 +1,50 @@
+[
+    {
+        "name": "Bhavana",
+        "address": "Uttar pradesh",
+        "email": "bhavana@gmail.com",
+        "phone": "9148827639",
+        "role": "Chairman",
+        "salary": 20000
+    },
+    {
+        "name": "Steve",
+        "address": "Ooty",
+        "email": "steve@gmail.com",
+        "phone": "9100997798",
+        "role": "Senior Selector ",
+        "salary": 12000
+    },
+    {
+        "name": "Anisha",
+        "address": "Mumbai",
+        "email": "anisha@gmail.com",
+        "phone": "9800657341",
+        "role": "Senior selector",
+        "salary": 22300
+    },
+    {
+        "name": "Ashwin",
+        "address": "Chennai",
+        "email": "ashwin@gmail.com",
+        "phone": "8935667832",
+        "role": "Reference checker",
+        "salary": 21300
+    },
+    {
+        "name": "Akshaya",
+        "address": "Chennai",
+        "email": "akshaya@gmail.com",
+        "phone": "9100990012",
+        "role": "Senior Secretary",
+        "salary": 12000
+    },
+    {
+        "name": "Pavan",
+        "address": "Andra Pradesh",
+        "email": "pavan@gmail.com",
+        "phone": "9167900112",
+        "role": "Division Manager",
+        "salary": 10000
+    }
+]
